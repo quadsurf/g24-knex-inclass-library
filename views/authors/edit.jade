@@ -1,0 +1,18 @@
+extends ../layout.jade
+
+block title
+  title Edit #{author.name}
+
+block content
+  h1 Edit #{author.name}
+  form(action="/authors/#{author.id}?_method=put" method="post")
+    p
+      label(for="name") Name &nbsp;
+      input(type="text" name="author[name]" id="name" value =author.name autofocus)
+    p
+      label(for="age") Age &nbsp;
+      input(type="text" name="author[age]" id="age" autofocus value = author.age)
+
+    input(type="submit" value="Save" class="btn btn-success")
+
+

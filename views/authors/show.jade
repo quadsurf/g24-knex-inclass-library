@@ -1,0 +1,13 @@
+extends ../layout.jade
+
+block title
+  title #{author.name}
+
+block content
+  h1 #{author.name}'s show page
+
+  a(href="/authors/#{author.id}/edit", class="btn btn-info") Edit this author
+
+  br
+
+  a(href='/') Go home

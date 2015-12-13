@@ -1,0 +1,17 @@
+extends ../layout.jade
+
+block title
+  title New Author
+
+block content
+  h1 Add a new author
+
+  form(action="/authors" method="post")
+    p
+      label(for="name") Name &nbsp;
+      input(type="text" name="author[name]" id="name" autofocus)
+    p
+      label(for="age") Age &nbsp;
+      input(type="text" name="author[age]" id="age" autofocus)
+
+    input(type="submit" value="Save" class="btn btn-success")
