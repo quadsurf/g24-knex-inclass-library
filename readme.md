@@ -14,8 +14,8 @@ You will need to create an additional migration and ensure you have a column for
 
 ### Part 3
 
-Your users love the app! But they want to be able to assign "categories" to books. Some examples are "non fiction", "historical", "science", but many books can be in many different categories. Add the additional tables necessary for categories. Users should be able to see all tags and add, update and remove tags as well.
+Your users love the app! But they want to be able to assign "categories" to books. Some examples are "non fiction", "historical", "science", but many books can be in many different categories. Add the additional tables necessary for categories. Users should be able to see all categories and add, update and remove categories as well.
 
 ### Part 4 - BONUS
 
-Add search functionality to your application! Users should be able to search for authors, books and tags.
+Add search functionality to your application! Users should be able to search for authors, books and categories.
