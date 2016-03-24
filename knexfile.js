@@ -14,6 +14,18 @@ module.exports = {
     debug:true
   },
 
+  test: {
+    client: 'postgresql',
+    connection: {
+      database: 'knexlibrary_test'
+    },
+      pool: {
+      min: 1,
+      max: 5
+    },
+    debug:true
+  },
+
   production: {
     client: 'postgresql',
     connection: {

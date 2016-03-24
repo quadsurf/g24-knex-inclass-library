@@ -9,7 +9,7 @@ block content
     i.glyphicon.glyphicon-pencil
 
   each author in authors
-    h2 #{author.name}, #{author.age}
+    h2 Name/Age - #{author.name}, #{author.age}
 
     p
       a(href="/authors/#{author.id}") See some more about #{author.name}
