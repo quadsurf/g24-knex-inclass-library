@@ -57,7 +57,7 @@ describe("GET /authors/1/edit", function () {
       .get('/authors/1/edit')
       .end(function (err, res) {
         if (err) return done(err)
-        expect(res.text).to.include(("/authors/1?_method=put").toLowerCase())
+        expect(res.text.toLowerCase()).to.include("/authors/1?_method=put")
         expect(res.text).to.include("/authors/1")
         expect(res.text).to.include("bob")
         expect(res.text).to.include(22)
@@ -73,8 +73,8 @@ describe("GET /authors/new", function () {
       .get('/authors/new')
       .end(function (err, res) {
         if (err) return done(err)
-        expect(res.text).to.include(("/authors").trim().toLowerCase())
-        expect(res.text).to.include(('method="post"').replace(/\s+/g,"").trim().toLowerCase())
+        expect(res.text.toLowerCase()).to.include(("/authors").trim())
+        expect(res.text.replace(/\s+/g,"").trim().toLowerCase()).to.include(('method="post"'))
         expect(res.status).to.eq(200)
         done();
       })
