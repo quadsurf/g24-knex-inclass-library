@@ -12,6 +12,8 @@ Continue to build off of your library app from the previous lesson and add an ad
 
 You will need to create an additional migration and ensure you have a column for the author_id of every book in your books table. Continue to keep your routes restful and remember that your books routes should be nested inside of your authors routes.
 
+Additionally, modify the author's show page to show all of the books the author has written.
+
 ### Part 3
 
 Your users love the app! But they want to be able to assign "categories" to books. Some examples are "non fiction", "historical", "science", but many books can be in many different categories. Add the additional tables necessary for categories. Users should be able to see all categories and add, update and remove categories as well.
