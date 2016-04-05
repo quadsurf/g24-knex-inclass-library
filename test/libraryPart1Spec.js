@@ -6,11 +6,13 @@ var code = require('../app')
 var request = require('supertest')
 var knex = require('../db/knex');
 
-before(function () {
-  return knex.seed.run(knex.config);
+beforeEach(function (done) {
+  return knex.seed.run(knex.config).then(function() {
+    done();
+  });
 });
 
-after(function(done) {
+afterEach(function(done) {
   knex('authors').del().then(()=> done());
 });
 
@@ -20,15 +22,21 @@ describe("GET /authors", function () {
       .get('/authors')
       .end(function (err, res) {
         if (err) return done(err)
-        expect(res.text.match(/Name\/Age/g).length).to.eq(3)
-        expect(res.text).to.include("/authors/1")
-        expect(res.text).to.include("/authors/2")
-        expect(res.text).to.include("/authors/3")
-        expect(res.status).to.eq(200)
-        done();
-      })
-  })
-})
+        expect(res.status).to.eq(200);
+        expect(res.text).to.include("/authors/1");
+        expect(res.text).to.include("/authors/2");
+        expect(res.text).to.include("/authors/3");
+        knex('authors').then(function(authors) {
+          expect(authors).to.be.defined;
+          expect(authors.length).to.eq(3);
+          expect(res.text.match(new RegExp(authors[0].name, 'g'))).to.be.defined;
+          expect(res.text.match(new RegExp(authors[1].name, 'g'))).to.be.defined;
+          expect(res.text.match(new RegExp(authors[2].name, 'g'))).to.be.defined;
+          done();
+        });
+      });
+  });
+});
 
 describe("GET /authors/1", function () {
   it("displays the show page with the correct author", function (done) {
@@ -36,7 +44,6 @@ describe("GET /authors/1", function () {
       .get('/authors/1')
       .end(function (err, res) {
         if (err) return done(err)
-        expect(res.text).to.include("/authors/1")
         expect(res.text).to.include("bob")
         expect(res.status).to.eq(200)
         done();
@@ -95,7 +102,7 @@ describe("POST /authors", function () {
           .end(function(err,res){
             expect(res.text).to.include("test")
             expect(res.text).to.include(45)
-            expect(res.text.match(/Name\/Age/g).length).to.eq(4)
+            expect(res.text.match(/\/authors\/\d+/g).length).to.eq(4)
             done();
           })
       })
@@ -125,7 +132,7 @@ describe("PUT /authors/1", function () {
             expect(res.text).to.include(94)
             expect(res.text).to.not.include("bob")
             expect(res.text).to.not.include(22)
-            expect(res.text.match(/Name\/Age/g).length).to.eq(4)
+            expect(res.text.match(/\/authors\/\d+/g).length).to.eq(3)
             done();
           })
       })
@@ -148,7 +155,7 @@ describe("DELETE /authors/1", function () {
             expect(res.text).to.not.include(22)
             expect(res.text).to.include("/authors/2")
             expect(res.text).to.include("/authors/3")
-            expect(res.text.match(/Name\/Age/g).length).to.eq(3)
+            expect(res.text.match(/\/authors\/\d+/g).length).to.eq(2)
             done();
           })
       })
