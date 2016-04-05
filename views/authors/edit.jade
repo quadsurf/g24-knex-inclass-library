@@ -1,0 +1,8 @@
+extends ../layout.jade
+
+block content
+  h1 Edit Author
+  form(method="POST", action="/authors/#{author.id}?_method=delete")
+    button(type="submit", class="btn btn-danger")
+      span(class="glyphicon glyphicon-remove")
+  include ./includes/form.jade
