@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authors</title>
+</head>
+<body>
+  <h3>Listing all authors</h3>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+    </thead>
+    <tbody>
+      <% authors.forEach(function(author){ %>
+        <tr>
+          <td> <%= author.name %> </td>
+          <td> <%= author.age %> </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
