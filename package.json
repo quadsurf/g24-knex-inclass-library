@@ -20,6 +20,7 @@
     "ejs": "^2.4.2",
     "express": "^4.13.4",
     "knex": "^0.10.0",
+    "materialize-css": "^0.97.6",
     "method-override": "^2.3.5",
     "morgan": "^1.7.0",
     "pg": "^4.5.2"

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Author</title>
+</head>
+<body>
+  <h3>Delete Author</h3>
+
+    <form action="/authors/<%= author.id %>?_method=DELETE">
+      <label for="name">Name: </label>
+      <input id="name" type="text" name="name" value="<%= author.name %>">
+      <label for="age">Age: </label>
+      <input id="age" type="text" name="age" value="<%= author.age %>">
+      <input type="submit" value="Delete Author">
+    </form>
+
+</body>
+</html>
