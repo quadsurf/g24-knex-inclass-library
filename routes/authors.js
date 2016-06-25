@@ -1,6 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams:true});
 var knex = require('../db/knex');
+var models = require("../models/models");
+var bcrypt = require('bcrypt');
 
 var Knex = function() {
   return knex('authors');
@@ -44,6 +46,9 @@ router.get('/:id',function(req,res){
     res.render('authors/show',{author:author});
   })
 });
+
+// READ ONE with bookshelf
+
 
 // UPDATE PART 1
 router.get('/:id/edit',function(req,res){

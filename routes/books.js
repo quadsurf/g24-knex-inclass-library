@@ -4,7 +4,7 @@ var knex = require("../db/knex");
 
 // Index
 router.get('/', function(req, res){
-  // we can left outer join for 1 query...but that doesn't seem worth it right now
+  //left outer join works too
   knex('authors').where({id:req.params.author_id}).first().then(function(author){
     knex('books').where({author_id:author.id}).then(function(books){
         res.render('books/index', {author: author,books: books});

@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('books', function(table) {
     table.increments().primary();
     table.string('title');
-    table.string('about');
+    table.text('about');
     table.string('imgurl');
     table.integer('author_id').unsigned().index().references('authors.id');
     table.integer('cats_id').unsigned().index().references('cats.id');

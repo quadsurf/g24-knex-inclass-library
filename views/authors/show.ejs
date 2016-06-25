@@ -43,13 +43,15 @@
       <br><br>
       <h1 class="header center orange-text">Author Details</h1>
       <div class="row center">
-          <h2>Author ID: <%= author.id %></h2>
+          <!-- <h2>Author ID: <%= author.id %></h2> -->
           <h2>Author Name: <%= author.name %></h2>
           <h2>Author Age: <%= author.age %></h2>
       </div>
-      <!-- <div class="row center">
-        <a href="/authors" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div> -->
+      <div class="row center">
+        <a href="/authors/<%= author.id %>/books" class="btn-large waves-effect waves-light orange">View Books</a>
+        <a href="/authors/<%= author.id %>/books/new" class="btn-large waves-effect waves-light orange">Add Book</a>
+        <!-- books.author_id -->
+      </div>
       <br><br>
 
     </div>

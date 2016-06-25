@@ -14,14 +14,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 
-
+// app.use('/authors', routes.authors);
 var authorsRoutes = require('./routes/authors');
 app.use('/authors',authorsRoutes);
 
 // authors/4/books/2/edit THIS IS RESTful!
-app.use('/authors/:author_id/books', routes.books);
-// var bookRoutes = require('./routes/books');
-// app.use('/authors/:author_id/books',bookRoutes);
+
+// app.use('/authors/:author_id/books', routes.books);
+// 2nd arg routes.books is better than authorsRoutes setup
+var booksRoutes = require('./routes/books');
+app.use('/authors/:author_id/books',booksRoutes);
 
 var catRoutes = require('./routes/cats');
 app.use('/cats',catRoutes);
